@@ -1,5 +1,6 @@
 import Commands from "./commands";
 import { Package } from "./src";
+import Command from "./Command";
 
 export default {
 
@@ -8,7 +9,7 @@ export default {
      *
      * @param name
      */
-    findCommand(name: string) {
+    findCommand(name: string): typeof Command {
         return Commands.find((command) => {
             return command.details.name === name;
         });
@@ -40,7 +41,7 @@ export default {
      */
     runCommand(name: string, cli: Package.CLI) {
         const command = this.findCommand(name);
-        command.run(cli.parse(command.args), this);
+        new command(cli.parse(command.args), this).run();
     },
 
     /**
@@ -57,7 +58,7 @@ export default {
      * Available commands.
      */
     get commands() {
-        return Commands.map((command: Package.Command) => {
+        return Commands.map((command: typeof Command) => {
             return command.details.name;
         })
     },

@@ -1,6 +1,6 @@
 import * as Path from 'path';
 import { readdirSync } from 'fs';
-import { Package } from "../src";
+import Command from "../Command";
 
 const files = readdirSync('./commands').filter((path) => {
     if (path.match(/index\.js/)) {
@@ -17,7 +17,7 @@ const paths = files.map((path: string) => {
     });
 });
 
-const commands: Array<Package.Command> = paths.map((path) => {
+const commands: Array<typeof Command> = paths.map((path) => {
     const command = require(path).default;
     command.details.path = path;
 
