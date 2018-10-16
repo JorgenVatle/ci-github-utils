@@ -26,9 +26,11 @@ const paths = files.map((path: string) => {
     });
 });
 
-const commands = paths.map((path) => {
+const commands: Array<Command> = paths.map((path) => {
     const command = require(path).default;
     command.details.path = path;
+
+    return command;
 });
 
 export default commands;
