@@ -13,7 +13,7 @@ export default class GetComment extends Command {
         owner: ['o', 'GitHub repository owner username'],
     };
 
-    static required = {
+    protected required = {
         repo: true,
         hash: true,
         owner: true,

@@ -5,7 +5,7 @@ export default abstract class Command {
     /**
      * Object containing required fields from the args property.
      */
-    static required?: any;
+    protected required?: any;
 
     /**
      * Object containing CLI arguments.
