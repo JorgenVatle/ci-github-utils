@@ -44,6 +44,16 @@ export default {
     },
 
     /**
+     * Exit with the given message.
+     *
+     * @param message
+     */
+    exit(message: any) {
+        console.log(message);
+        process.exit(0);
+    },
+
+    /**
      * Available commands.
      */
     get commands() {
