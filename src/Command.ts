@@ -46,6 +46,6 @@ export default abstract class Command {
     /**
      * Run the command.
      */
-    run: () => void;
+    abstract run(): void;
 
 }
