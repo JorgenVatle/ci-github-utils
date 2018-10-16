@@ -33,15 +33,6 @@ export default {
     },
 
     /**
-     * Convert the given error to a package-specific error.
-     *
-     * @param error
-     */
-    handleError(error: Error) {
-        throw this.exception(error.message);
-    },
-
-    /**
      * Run the given named command.
      *
      * @param name
