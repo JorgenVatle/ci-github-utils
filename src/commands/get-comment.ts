@@ -1,8 +1,15 @@
+import * as Request from 'request-promise';
 import { Package } from "../src";
 
 export default {
-    run(cli: Package.CLI, lib: Package.Library) {
-
+    run({ owner, repo, hash }: Package.CliArgs, lib: Package.Library) {
+        Request(lib.buildPath(`/repos/${owner}/${repo}/git/commits/${hash}`))
+            .then((response) => {
+                lib.complete(response.body.message)
+            })
+            .catch((error) => {
+                throw lib.exception(error.message);
+            });
     },
 
     details: {
