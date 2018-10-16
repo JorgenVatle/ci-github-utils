@@ -19,7 +19,7 @@ export default class GetComment extends Command {
         owner: true,
     };
 
-    run() {
+    protected command() {
         const { owner, repo, hash } = this.params;
         Request({
             url: this.library.buildPath(`/repos/${owner}/${repo}/git/commits/${hash}`),

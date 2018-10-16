@@ -44,8 +44,15 @@ export default abstract class Command {
     }
 
     /**
+     * Command functionality.
+     */
+    protected abstract command(): void;
+
+    /**
      * Run the command.
      */
-    public abstract run(): void;
+    public run() {
+        this.command();
+    }
 
 }
