@@ -71,6 +71,10 @@ export default abstract class Command {
      * Run the command.
      */
     public run() {
+        if (typeof this.required === 'object') {
+            this.validateParams();
+        }
+
         this.command();
     }
 
