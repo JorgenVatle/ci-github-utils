@@ -83,7 +83,9 @@ export default abstract class Command {
             headers: { 'User-Agent': this.library.userAgent },
             method,
             body,
-        })
+        }).catch((error) => {
+            throw this.library.exception(error.message);
+        });
     }
 
     /**
