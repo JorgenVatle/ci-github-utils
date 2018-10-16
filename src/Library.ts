@@ -1,3 +1,4 @@
+import * as CLI from 'cli';
 import Commands from "./commands";
 
 export default {
@@ -29,5 +30,16 @@ export default {
      */
     exception(message: string) {
         return new Error(message);
+    },
+
+    /**
+     * Run the given named command.
+     *
+     * @param name
+     * @param cli
+     */
+    runCommand(name: string, cli: typeof CLI) {
+        const command = this.findCommand(name);
+        command.run(cli.parse(command.args));
     }
 }
