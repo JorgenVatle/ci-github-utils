@@ -1,6 +1,16 @@
 import * as Path from 'path';
 import { readdirSync } from 'fs';
 
+export interface Command {
+    command: (cli: any) => void,
+    details: {
+        name: string,
+        description: string,
+        path?: string,
+    },
+    args: any,
+}
+
 const files = readdirSync('./commands').filter((path) => {
     if (path.match(/index\.js/)) {
         return false;
