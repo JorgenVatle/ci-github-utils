@@ -1,7 +1,7 @@
 import * as Request from 'request-promise';
 import Command from "../Command";
 
-export class GetComment extends Command {
+export default class GetComment extends Command {
     static details = {
         name: 'get-comment',
         description: 'Fetch the comment of the given Git commit.'
