@@ -21,15 +21,9 @@ export default class GetComment extends Command {
 
     protected command() {
         const { owner, repo, hash } = this.params;
-        Request({
-            url: this.library.buildPath(`/repos/${owner}/${repo}/git/commits/${hash}`),
-            headers: {
-                'User-Agent': this.library.userAgent,
-            }
-        }).then((response) => {
-            this.library.complete(response.body.message)
-        }).catch((error) => {
-            throw this.library.exception(error.message);
-        });
+        this.request('GET', `/repos/${owner}/${repo}/git/commits/${hash}`)
+            .then((response) => {
+                this.library.complete(response.body.message);
+            });
     }
 }
