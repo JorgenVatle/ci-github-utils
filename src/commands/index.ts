@@ -1,9 +1,10 @@
+import * as CLI from 'cli';
 import * as Path from 'path';
 import { readdirSync } from 'fs';
 import Library from "../Library";
 
 export interface Command {
-    run: (cli: any, lib: typeof Library) => void,
+    run: (cli: typeof CLI, lib: typeof Library) => void,
     details: {
         name: string,
         description: string,
