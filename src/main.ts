@@ -4,7 +4,13 @@ import Library from "./Library";
 const commandName = CLI.parse(null, Library.commands).command;
 
 if (!Library.isCommand(commandName)) {
-    throw Library.exception('Command not found!');
+    CLI.error('Unknown command!');
+    CLI.info('Use --help to view a list of commands');
+    process.exit(1);
 }
 
-Library.runCommand(commandName, CLI);
+try {
+    Library.runCommand(commandName, CLI);
+} catch (error) {
+    CLI.fatal(error.message);
+}
