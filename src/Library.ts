@@ -1,5 +1,5 @@
 import * as CLI from 'cli';
-import Commands from "./commands";
+import Commands, { Command } from "./commands";
 
 export default {
 
@@ -41,5 +41,14 @@ export default {
     runCommand(name: string, cli: typeof CLI) {
         const command = this.findCommand(name);
         command.run(cli.parse(command.args));
+    },
+
+    /**
+     * Available commands.
+     */
+    get commands() {
+        return Commands.map((command: Command) => {
+            return command.details.name;
+        })
     }
 }
