@@ -63,6 +63,14 @@ export default {
     },
 
     /**
+     * Package user agent.
+     */
+    get userAgent() {
+        const npm = require('../package.json');
+        return `CI-Github-Utils v${npm.version} (${npm.homepage})`;
+    },
+
+    /**
      * Build path to the given endpoint.
      *
      * @param to
