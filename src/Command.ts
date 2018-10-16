@@ -80,7 +80,10 @@ export default abstract class Command {
     protected request(method: HttpMethod, path: string, body?: any) {
         return Request({
             url: this.library.buildPath(path),
-            headers: { 'User-Agent': this.library.userAgent },
+            headers: {
+                'User-Agent': this.library.userAgent,
+                'Accept': 'application/vnd.github.v3+json',
+            },
             method,
             body,
         }).catch((error) => {
