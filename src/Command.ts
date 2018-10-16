@@ -1,4 +1,7 @@
+import * as Request from 'request-promise';
 import { Package } from "./src";
+
+type HttpMethod = 'GET' | 'HEAD' | 'POST' | 'PUT' | 'DELETE' | 'CONNECT' | 'OPTIONS' | 'TRACE';
 
 export default abstract class Command {
 
@@ -65,6 +68,22 @@ export default abstract class Command {
         if (invalid.length) {
             throw this.library.exception(`Required parameters not provided! (${invalid.toString()})`)
         }
+    }
+
+    /**
+     * Send a HTTP request to the given endpoint.
+     *
+     * @param method
+     * @param path
+     * @param body
+     */
+    protected request(method: HttpMethod, path: string, body: any) {
+        return Request({
+            url: this.library.buildPath(path),
+            headers: { 'User-Agent': this.library.userAgent },
+            method,
+            body,
+        })
     }
 
     /**
