@@ -49,6 +49,25 @@ export default abstract class Command {
     protected abstract command(): void;
 
     /**
+     * Validate command parameters.
+     */
+    protected validateParams() {
+        const invalid: Array<string> = [];
+
+        Object.keys(this.required).forEach((key) => {
+            const isRequired = this.required[key];
+
+            if (isRequired && this.params[key] === undefined) {
+                invalid.push(key);
+            }
+        });
+
+        if (invalid.length) {
+            throw this.library.exception(`Required parameters not provided! (${invalid.toString()})`)
+        }
+    }
+
+    /**
      * Run the command.
      */
     public run() {
