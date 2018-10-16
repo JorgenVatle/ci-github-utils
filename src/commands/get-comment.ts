@@ -1,4 +1,3 @@
-import * as Request from 'request-promise';
 import Command from "../Command";
 
 export default class GetComment extends Command {
