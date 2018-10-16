@@ -14,5 +14,6 @@ declare module Package {
             path?: string,
         },
         args: any,
+        required?: any,
     }
 }
