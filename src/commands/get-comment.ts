@@ -3,8 +3,12 @@ import { Package } from "../src";
 
 export default {
     run({ owner, repo, hash }: Package.CliArgs, lib: Package.Library) {
-        Request(lib.buildPath(`/repos/${owner}/${repo}/git/commits/${hash}`))
-            .then((response) => {
+        Request({
+            url: lib.buildPath(`/repos/${owner}/${repo}/git/commits/${hash}`),
+            headers: {
+                'User-Agent': lib.userAgent,
+            }
+        }).then((response) => {
                 lib.complete(response.body.message)
             })
             .catch((error) => {
