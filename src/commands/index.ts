@@ -17,7 +17,8 @@ const paths = files.map((path: string) => {
 });
 
 const commands = paths.map((path) => {
-    return require(path);
+    const command = require(path).default;
+    command.details.path = path;
 });
 
-export default { files, paths, commands }
+export default commands;
