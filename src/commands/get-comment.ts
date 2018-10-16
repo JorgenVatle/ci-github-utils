@@ -22,7 +22,7 @@ export default class GetComment extends Command {
         const { owner, repo, hash } = this.params;
         this.request('GET', `/repos/${owner}/${repo}/git/commits/${hash}`)
             .then((response) => {
-                this.library.complete(response.body.message);
+                this.library.complete(JSON.parse(response).message);
             });
     }
 }
