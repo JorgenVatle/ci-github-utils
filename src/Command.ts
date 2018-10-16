@@ -5,32 +5,32 @@ export default abstract class Command {
     /**
      * Object containing required fields from the args property.
      */
-    required?: any;
+    static required?: any;
 
     /**
      * Object containing CLI arguments.
      *
      * @link https://github.com/node-js-libs/cli#command-line-arguments-parser
      */
-    args?: any;
-
-    /**
-     * Parsed CLI arguments.
-     */
-    params: any;
+    static args?: any;
 
     /**
      * Object containing the command name and description.
      */
-    details: {
+    static details: {
         name: string,
         description: string,
     };
 
     /**
+     * Parsed CLI arguments.
+     */
+    protected params: any;
+
+    /**
      * Instance of package Library.
      */
-    library: Package.Library;
+    protected library: Package.Library;
 
     /**
      * Command constructor.

@@ -2,18 +2,18 @@ import * as Request from 'request-promise';
 import Command from "../Command";
 
 export class GetComment extends Command {
-    details = {
+    static details = {
         name: 'get-comment',
         description: 'Fetch the comment of the given Git commit.'
     };
 
-    args = {
+    static args = {
         repo: ['r', 'GitHub repository'],
         hash: ['h', 'GitHub commit hash/sha'],
         owner: ['o', 'GitHub repository owner username'],
     };
 
-    required = {
+    static required = {
         repo: true,
         hash: true,
         owner: true,
