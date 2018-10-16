@@ -2,7 +2,9 @@ import * as Path from 'path';
 import { readdirSync } from 'fs';
 import Command from "../Command";
 
-const files = readdirSync('./commands').filter((path) => {
+const commandsLocation = './';
+
+const files = readdirSync(commandsLocation).filter((path) => {
     if (path.match(/index\.js/)) {
         return false;
     }
@@ -12,7 +14,7 @@ const files = readdirSync('./commands').filter((path) => {
 
 const paths = files.map((path: string) => {
     return Path.format({
-        root: './',
+        root: commandsLocation,
         base: path,
     });
 });
