@@ -8,9 +8,9 @@ export default class GetComment extends Command {
     };
 
     static args = {
-        repo: ['r', 'GitHub repository'],
-        hash: ['h', 'GitHub commit hash/sha'],
-        owner: ['o', 'GitHub repository owner username'],
+        repo: ['r', 'GitHub repository', 'string'],
+        hash: ['h', 'GitHub commit hash/sha', 'string'],
+        owner: ['o', 'GitHub repository owner username', 'string'],
     };
 
     protected required = {
