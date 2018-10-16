@@ -60,5 +60,16 @@ export default {
         return Commands.map((command: Package.Command) => {
             return command.details.name;
         })
+    },
+
+    /**
+     * Build path to the given endpoint.
+     *
+     * @param to
+     * @param base
+     */
+    buildPath(to: string, base = 'https://api.github.com/') {
+        return (base + '/').replace(/\/+$/, '') +
+            to.replace(/^\/+/, '/');
     }
 }
