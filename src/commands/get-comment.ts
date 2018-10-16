@@ -25,5 +25,11 @@ export default {
         repo: ['r', 'GitHub repository'],
         hash: ['h', 'GitHub commit hash/sha'],
         owner: ['o', 'GitHub repository owner username'],
+    },
+
+    required: {
+        repo: true,
+        hash: true,
+        owner: true,
     }
 }
