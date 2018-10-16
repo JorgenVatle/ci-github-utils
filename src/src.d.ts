@@ -4,9 +4,10 @@ import Library from "./Library";
 declare module Package {
     type CLI = typeof CLI;
     type Library = typeof Library;
+    type CliArgs = any;
 
     interface Command {
-        run: (cli: CLI, lib: Library) => void,
+        run: (args: CliArgs, lib: Library) => void,
         details: {
             name: string,
             description: string,
