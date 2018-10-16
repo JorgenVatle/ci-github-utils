@@ -77,7 +77,7 @@ export default abstract class Command {
      * @param path
      * @param body
      */
-    protected request(method: HttpMethod, path: string, body: any) {
+    protected request(method: HttpMethod, path: string, body?: any) {
         return Request({
             url: this.library.buildPath(path),
             headers: { 'User-Agent': this.library.userAgent },
