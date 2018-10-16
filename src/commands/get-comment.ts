@@ -1,35 +1,35 @@
 import * as Request from 'request-promise';
-import { Package } from "../src";
+import Command from "../Command";
 
-export default {
-    run({ owner, repo, hash }: Package.CliArgs, lib: Package.Library) {
-        Request({
-            url: lib.buildPath(`/repos/${owner}/${repo}/git/commits/${hash}`),
-            headers: {
-                'User-Agent': lib.userAgent,
-            }
-        }).then((response) => {
-                lib.complete(response.body.message)
-            })
-            .catch((error) => {
-                throw lib.exception(error.message);
-            });
-    },
-
-    details: {
+export class GetComment extends Command {
+    details = {
         name: 'get-comment',
         description: 'Fetch the comment of the given Git commit.'
-    },
+    };
 
-    args: {
+    args = {
         repo: ['r', 'GitHub repository'],
         hash: ['h', 'GitHub commit hash/sha'],
         owner: ['o', 'GitHub repository owner username'],
-    },
+    };
 
-    required: {
+    required = {
         repo: true,
         hash: true,
         owner: true,
+    };
+
+    run() {
+        const { owner, repo, hash } = this.params;
+        Request({
+            url: this.library.buildPath(`/repos/${owner}/${repo}/git/commits/${hash}`),
+            headers: {
+                'User-Agent': this.library.userAgent,
+            }
+        }).then((response) => {
+            this.library.complete(response.body.message)
+        }).catch((error) => {
+            throw this.library.exception(error.message);
+        });
     }
 }
