@@ -48,7 +48,7 @@ export default {
      *
      * @param message
      */
-    exit(message: any) {
+    complete(message: any) {
         console.log(message);
         process.exit(0);
     },
