@@ -1,9 +1,7 @@
 import * as CLI from 'cli';
 import Library from "./Library";
 
-CLI.parse(null, Library.commands);
-
-const command = CLI.command;
+const command = process.argv[2];
 
 if (!Library.isCommand(command)) {
     CLI.error(`Unknown command! (${command})`);
