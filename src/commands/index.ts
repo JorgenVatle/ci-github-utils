@@ -2,7 +2,7 @@ import * as Path from 'path';
 import { readdirSync } from 'fs';
 
 export interface Command {
-    command: (cli: any) => void,
+    run: (cli: any) => void,
     details: {
         name: string,
         description: string,
