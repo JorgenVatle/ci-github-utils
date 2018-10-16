@@ -46,6 +46,6 @@ export default abstract class Command {
     /**
      * Run the command.
      */
-    abstract run(): void;
+    public abstract run(): void;
 
 }
