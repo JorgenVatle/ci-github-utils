@@ -57,7 +57,7 @@ export default abstract class Command {
         Object.keys(this.required).forEach((key) => {
             const isRequired = this.required[key];
 
-            if (isRequired && this.params[key] === undefined) {
+            if (isRequired && this.params[key] === null) {
                 invalid.push(key);
             }
         });
