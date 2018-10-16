@@ -11,7 +11,7 @@ const files = readdirSync('./commands').filter((path) => {
 
 const paths = files.map((path: string) => {
     return Path.format({
-        root: './commands/',
+        root: './',
         base: path,
     });
 });
