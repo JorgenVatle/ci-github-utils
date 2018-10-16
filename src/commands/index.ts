@@ -1,17 +1,6 @@
-import * as CLI from 'cli';
 import * as Path from 'path';
 import { readdirSync } from 'fs';
-import Library from "../Library";
-
-export interface Command {
-    run: (cli: typeof CLI, lib: typeof Library) => void,
-    details: {
-        name: string,
-        description: string,
-        path?: string,
-    },
-    args: any,
-}
+import { Package } from "../src";
 
 const files = readdirSync('./commands').filter((path) => {
     if (path.match(/index\.js/)) {
@@ -28,7 +17,7 @@ const paths = files.map((path: string) => {
     });
 });
 
-const commands: Array<Command> = paths.map((path) => {
+const commands: Array<Package.Command> = paths.map((path) => {
     const command = require(path).default;
     command.details.path = path;
 

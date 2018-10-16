@@ -1,5 +1,7 @@
+import { Package } from "../src";
+
 export default {
-    run(cli: any) {
+    run(cli: Package.CLI, lib: Package.Library) {
 
     },
 
