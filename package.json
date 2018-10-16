@@ -22,7 +22,9 @@
   },
   "homepage": "https://github.com/JorgenVatle/ci-github-utils#readme",
   "dependencies": {
-    "cli": "^1.0.1"
+    "@types/request": "^2.47.1",
+    "cli": "^1.0.1",
+    "request": "^2.88.0"
   },
   "devDependencies": {
     "@types/cli": "^0.11.19",
