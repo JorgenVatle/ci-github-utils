@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "Small CLI intended for CI environments that needs to interact with the GitHub API",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "preversion": "npm run build && git commit dist -m \"Build package dist directory.\" || echo No changes to package dist",
+    "postpublish": "git push"
   },
   "repository": {
     "type": "git",
