@@ -40,7 +40,7 @@ export default {
      */
     runCommand(name: string, cli: Package.CLI) {
         const command = this.findCommand(name);
-        command.run(cli.parse(command.args));
+        command.run(cli.parse(command.args), this);
     },
 
     /**
