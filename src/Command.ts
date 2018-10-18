@@ -49,7 +49,7 @@ export default abstract class Command {
     /**
      * Command functionality.
      */
-    protected abstract command(): void;
+    protected abstract async command(): Promise<void>;
 
     /**
      * Validate command parameters.
