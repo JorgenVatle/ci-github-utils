@@ -18,11 +18,9 @@ export default class GetComment extends Command {
         owner: true,
     };
 
-    protected command() {
+    protected async command() {
         const { owner, repo, hash } = this.params;
-        this.request('GET', `/repos/${owner}/${repo}/git/commits/${hash}`)
-            .then((response) => {
-                this.library.complete(JSON.parse(response).message);
-            });
+        const response = await this.request('GET', `/repos/${owner}/${repo}/git/commits/${hash}`)
+        this.library.complete(JSON.parse(response).message);
     }
 }
